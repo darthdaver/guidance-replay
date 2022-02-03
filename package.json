@@ -5,7 +5,7 @@
   "scripts": {
     "pretest": "eslint lib test *.js",
     "test": "tape test/*.test.js",
-    "start": "budo sim/index.js:sim/bundle.js --dir sim/ --live -- -t [ envify --NODE_ENV development ]",
+    "start": "budo ./sim/index.js:sim/bundle.js --dir sim/ --open -- -t [ envify --NODE_ENV development --MapboxAccessToken pk.eyJ1IjoiZGFydGhkYXZlciIsImEiOiJja2ttcXcxMmkwbHdiMm9uc3p1dm10ZXdpIn0.AY56Jv_tK30i0xg7h6E0Rg ]",
     "docs": "documentation build lib/* -o docs.md -f md"
   },
   "dependencies": {

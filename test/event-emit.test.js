@@ -56,7 +56,7 @@ test('emit.all', function(t) {
   t.test('garage [num events]', function(assert) {
     var emitter = new Emitter(route(garage), 100);
     var events = emitter.all();
-    assert.ok(Math.abs(garage.routes[0].duration - (events.length * .1)) < 1, 'Num events * interval should correspond to route duration');
+    assert.ok(Math.abs(garage[0].duration - (events.length * .1)) < 1, 'Num events * interval should correspond to route duration');
     assert.end();
   });
 
@@ -106,7 +106,7 @@ test('emit.next acceldecel', function(assert) {
 
 test('speed placer', function(t) {
   var garage = JSON.parse(JSON.stringify(require('./fixtures/garage.v5')));
-  var garageSteps = garage.routes[0].legs[0].steps;
+  var garageSteps = garage[0].legs[0].steps;
   var geojson = route.buildTrace(garageSteps, { spacing: 'acceldecel' }); 
   var place = new EmitterPlace(geojson, true);
 

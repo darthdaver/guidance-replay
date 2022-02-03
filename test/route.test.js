@@ -23,7 +23,7 @@ test('interpolateConstant', function(t) {
 test('buildTrace', function(t) {
   var garage = JSON.parse(JSON.stringify(require('./fixtures/garage.v5')));
   t.test('steps', function(assert) {
-    var steps = garage.routes[0].legs[0].steps;
+    var steps = garage[0].legs[0].steps;
     var geojson = buildTrace(steps, { spacing: 'constant' });
     assert.deepEqual(geojson.geometry.coordinates, [
       [ -77.032395, 38.912603 ],
@@ -73,13 +73,13 @@ test('route', function(t) {
     var rmnp = JSON.parse(JSON.stringify(require('./fixtures/rmnp.v5')));
     var geojson = route(rmnp);
     var times = geojson.properties.coordinateProperties.times;
-    assert.ok(Math.abs((rmnp.routes[0].duration * 1000) - times[times.length - 1]) < 1);
+    assert.ok(Math.abs((rmnp[0].duration * 1000) - times[times.length - 1]) < 1);
     assert.end();
   });
 
   t.test('rmnp (v5)', function(assert) {
     var fixture = JSON.parse(JSON.stringify(require('./fixtures/rmnp.v5')));
-    var rmnp = fixture.routes[0].legs[0].steps;
+    var rmnp = fixture[0].legs[0].steps;
     var firstThree = rmnp.slice(0,3);
 
     var expectedCoords = [
@@ -256,7 +256,7 @@ test('place datapoints [synthetic]', function(t) {
 
 test('place datapoints [garage]', function(t) {
   var garage = JSON.parse(JSON.stringify(require('./fixtures/garage.v5')));
-  var garageSteps = garage.routes[0].legs[0].steps;
+  var garageSteps = garage[0].legs[0].steps;
 
   t.test('step 1', function(assert) {
     var thisSpeed = util.speed(garageSteps[0].distance, garageSteps[0].duration);
@@ -327,7 +327,7 @@ test('place datapoints [garage]', function(t) {
 
 test('place datapoints [rmnp]', function(t) {
   var rmnp = JSON.parse(JSON.stringify(require('./fixtures/rmnp.v5')));
-  var routeSteps = rmnp.routes[0].legs[0].steps;
+  var routeSteps = rmnp[0].legs[0].steps;
 
   var rate = 5;
   for (var i = 0; i < routeSteps.length - 1; i++) {
@@ -344,7 +344,7 @@ test('place datapoints [rmnp]', function(t) {
 
 test('interpolateAccelDecel', function(t) {
   var garage = JSON.parse(JSON.stringify(require('./fixtures/garage.v5')));
-  var garageSteps = garage.routes[0].legs[0].steps;
+  var garageSteps = garage[0].legs[0].steps;
 
   t.test('garage - steps', function(assert) {
     var steps = interpolateAccelDecel(garageSteps);

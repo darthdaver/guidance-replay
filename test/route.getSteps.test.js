@@ -6,7 +6,7 @@ tape('route.getSteps v4', function(assert) {
   var steps = route.getSteps(garage);
   assert.deepEqual(steps.length, 3, 'creates 3 steps');
   // Don't consider the last "arrival" step
-  garage.routes[0].steps.slice(0,-1).forEach(function(step, i) {
+  garage[0].steps.slice(0,-1).forEach(function(step, i) {
     assert.deepEqual(steps[i].distance, step.distance, 'step ' + i + ' distance = ' + steps[i].distance);
     assert.deepEqual(steps[i].duration, step.duration, 'step ' + i + ' duration = ' + steps[i].duration);
   });
@@ -20,9 +20,9 @@ tape('route.getSteps v4', function(assert) {
 tape('route.getSteps v4 with coordinates of different decimal place lengths', function(assert) {
   var sf = JSON.parse(JSON.stringify(require('./fixtures/sf.v4')));
   var steps = route.getSteps(sf);
-  assert.deepEqual(steps.length, sf.routes[0].steps.length, 'creates 7 steps');
+  assert.deepEqual(steps.length, sf[0].steps.length, 'creates 7 steps');
   // Don't consider the last "arrival" step
-  sf.routes[0].steps.slice(0,-1).forEach(function(step, i) {
+  sf[0].steps.slice(0,-1).forEach(function(step, i) {
     assert.deepEqual(steps[i].distance, step.distance, 'step ' + i + ' distance = ' + steps[i].distance);
     assert.deepEqual(steps[i].duration, step.duration, 'step ' + i + ' duration = ' + steps[i].duration);
   });

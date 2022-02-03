@@ -122,16 +122,16 @@ test('step v5 in accdeldecel mode', function (assert) {
 test('coords v4', function (assert) {
   var geojson = JSON.parse(JSON.stringify(require('./fixtures/rmnp.v4.json')));
   var locator = new Locator(geojson);
-  var step0lon = geojson.routes[0].steps[0].maneuver.location.coordinates[0];
-  var step0lat = geojson.routes[0].steps[0].maneuver.location.coordinates[1];
-  var step1lon = geojson.routes[0].steps[1].maneuver.location.coordinates[0];
-  var step1lat = geojson.routes[0].steps[1].maneuver.location.coordinates[1];
-  var step2lon = geojson.routes[0].steps[2].maneuver.location.coordinates[0];
-  var step2lat = geojson.routes[0].steps[2].maneuver.location.coordinates[1];
-  var step3lon = geojson.routes[0].steps[3].maneuver.location.coordinates[0];
-  var step3lat = geojson.routes[0].steps[3].maneuver.location.coordinates[1];
-  var step4lon = geojson.routes[0].steps[4].maneuver.location.coordinates[0];
-  var step4lat = geojson.routes[0].steps[4].maneuver.location.coordinates[1];
+  var step0lon = geojson[0].steps[0].maneuver.location.coordinates[0];
+  var step0lat = geojson[0].steps[0].maneuver.location.coordinates[1];
+  var step1lon = geojson[0].steps[1].maneuver.location.coordinates[0];
+  var step1lat = geojson[0].steps[1].maneuver.location.coordinates[1];
+  var step2lon = geojson[0].steps[2].maneuver.location.coordinates[0];
+  var step2lat = geojson[0].steps[2].maneuver.location.coordinates[1];
+  var step3lon = geojson[0].steps[3].maneuver.location.coordinates[0];
+  var step3lat = geojson[0].steps[3].maneuver.location.coordinates[1];
+  var step4lon = geojson[0].steps[4].maneuver.location.coordinates[0];
+  var step4lat = geojson[0].steps[4].maneuver.location.coordinates[1];
 
   assert.ok(Math.abs(locator.coords(0).geometry.coordinates[0] - step0lon) < 0.00001 &&
             Math.abs(locator.coords(0).geometry.coordinates[1] - step0lat) < 0.00001, 'Time 0 coordinates should correspond to 0th coordinates');
@@ -157,14 +157,14 @@ test('coords v4', function (assert) {
 test('coords v5', function (assert) {
   var geojson = JSON.parse(JSON.stringify(require('./fixtures/rmnp.v5.json')));
   var locator = new Locator(geojson);
-  var step0lon = geojson.routes[0].legs[0].steps[0].maneuver.location[0];
-  var step0lat = geojson.routes[0].legs[0].steps[0].maneuver.location[1];
-  var step1lon = geojson.routes[0].legs[0].steps[1].maneuver.location[0];
-  var step1lat = geojson.routes[0].legs[0].steps[1].maneuver.location[1];
-  var step2lon = geojson.routes[0].legs[0].steps[2].maneuver.location[0];
-  var step2lat = geojson.routes[0].legs[0].steps[2].maneuver.location[1];
-  var step3lon = geojson.routes[0].legs[0].steps[3].maneuver.location[0];
-  var step3lat = geojson.routes[0].legs[0].steps[3].maneuver.location[1];
+  var step0lon = geojson[0].legs[0].steps[0].maneuver.location[0];
+  var step0lat = geojson[0].legs[0].steps[0].maneuver.location[1];
+  var step1lon = geojson[0].legs[0].steps[1].maneuver.location[0];
+  var step1lat = geojson[0].legs[0].steps[1].maneuver.location[1];
+  var step2lon = geojson[0].legs[0].steps[2].maneuver.location[0];
+  var step2lat = geojson[0].legs[0].steps[2].maneuver.location[1];
+  var step3lon = geojson[0].legs[0].steps[3].maneuver.location[0];
+  var step3lat = geojson[0].legs[0].steps[3].maneuver.location[1];
 
   assert.ok(Math.abs(locator.coords(0).geometry.coordinates[0] - step0lon) < 0.00001 &&
             Math.abs(locator.coords(0).geometry.coordinates[1] - step0lat) < 0.00001, 'Time 0 coordinates should correspond to 0th coordinates');
@@ -186,14 +186,14 @@ test('coords v5', function (assert) {
 test('coords v5 in acceldecel mode', function (assert) {
   var geojson = JSON.parse(JSON.stringify(require('./fixtures/rmnp.v5.json')));
   var locator = new Locator(geojson, {'spacing': 'acceldecel'});
-  var step0lon = geojson.routes[0].legs[0].steps[0].maneuver.location[0];
-  var step0lat = geojson.routes[0].legs[0].steps[0].maneuver.location[1];
-  var step1lon = geojson.routes[0].legs[0].steps[1].maneuver.location[0];
-  var step1lat = geojson.routes[0].legs[0].steps[1].maneuver.location[1];
-  var step2lon = geojson.routes[0].legs[0].steps[2].maneuver.location[0];
-  var step2lat = geojson.routes[0].legs[0].steps[2].maneuver.location[1];
-  var step3lon = geojson.routes[0].legs[0].steps[3].maneuver.location[0];
-  var step3lat = geojson.routes[0].legs[0].steps[3].maneuver.location[1];
+  var step0lon = geojson[0].legs[0].steps[0].maneuver.location[0];
+  var step0lat = geojson[0].legs[0].steps[0].maneuver.location[1];
+  var step1lon = geojson[0].legs[0].steps[1].maneuver.location[0];
+  var step1lat = geojson[0].legs[0].steps[1].maneuver.location[1];
+  var step2lon = geojson[0].legs[0].steps[2].maneuver.location[0];
+  var step2lat = geojson[0].legs[0].steps[2].maneuver.location[1];
+  var step3lon = geojson[0].legs[0].steps[3].maneuver.location[0];
+  var step3lat = geojson[0].legs[0].steps[3].maneuver.location[1];
 
   assert.ok(Math.abs(locator.coords(0).geometry.coordinates[0] - step0lon) < 0.00001 &&
             Math.abs(locator.coords(0).geometry.coordinates[1] - step0lat) < 0.00001, 'Time 0 coordinates should correspond to 0th coordinates');
